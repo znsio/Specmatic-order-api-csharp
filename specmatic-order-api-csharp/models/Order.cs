@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-
+using System.Diagnostics.CodeAnalysis;
 namespace specmatic_order_api_csharp.models;
 
+[ExcludeFromCodeCoverage]
 public class Order
 {
     private static int _idCounter = 0;

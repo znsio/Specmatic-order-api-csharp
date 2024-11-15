@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace specmatic_order_api_csharp.filestorage;
 
+[ExcludeFromCodeCoverage]
 public static class LocalFileSystem
 {
     public static string SaveImage(string imageFileName, byte[] bytes)

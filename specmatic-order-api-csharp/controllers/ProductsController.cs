@@ -7,8 +7,10 @@ using System.Linq;
 using specmatic_order_api_csharp.exceptions;
 using specmatic_order_api_csharp.models;
 using specmatic_order_api_csharp.services;
+using System.Diagnostics.CodeAnalysis;
 namespace specmatic_order_api_csharp.controllers // Replace with your actual namespace
 {
+    [ExcludeFromCodeCoverage]
     [ApiController]
     [Route("products")]
     public class ProductsController : ControllerBase

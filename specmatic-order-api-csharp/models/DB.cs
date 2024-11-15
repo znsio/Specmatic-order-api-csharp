@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Http;
 using specmatic_order_api_csharp.exceptions;
 
 namespace specmatic_order_api_csharp.models;
 
+[ExcludeFromCodeCoverage]
 public static class DB
 {
     private static Dictionary<int, Product> PRODUCTS = new()

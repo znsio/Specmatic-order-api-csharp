@@ -42,6 +42,5 @@
 
     <ItemGroup>
       <Folder Include="examples\" />
-      <Folder Include="tests\" />
     </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("specmatic-order-api-csharp.test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b883b62b54c0cf81e7a6fc698f49ebee93b22aee")]
 [assembly: System.Reflection.AssemblyProductAttribute("specmatic-order-api-csharp.test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("specmatic-order-api-csharp.test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
