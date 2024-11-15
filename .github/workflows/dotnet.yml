@@ -1,0 +1,88 @@
+name: .NET Core CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+
+jobs:
+  contract-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Setup Testcontainers Cloud Client
+      uses: atomicjar/testcontainers-cloud-setup-action@v1
+      with:
+        token: ${{ secrets.TC_CLOUD_TOKEN }}
+        wait: true
+
+    - name: Test with Coverage
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" /p:CollectCoverage=true --results-directory ./TestResults
+      env:
+        COVERLET_OUTPUT_FORMAT: cobertura
+
+    - name: Publish Code Coverage Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: "TestResults/*/coverage.cobertura.xml"
+        badge: true
+        fail_below_min: false 
+        format: markdown
+        hide_branch_rate: false
+        hide_complexity: false
+        indicators: true
+        output: file
+        thresholds: "60 80"
+
+    - name: Upload Code Coverage Results
+      uses: actions/upload-artifact@v3
+      with:
+       name: code-coverage-results
+       path: code-coverage-results.md
+
+
+    - name: Display Coverage Summary in Workflow UI
+      run: |
+        echo "Code Coverage Summary" >> $GITHUB_STEP_SUMMARY
+        cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
+    
+    - name: Upload HTML Test Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: html-report
+        path: specmatic-order-api-csharp.test/build/reports/specmatic/html
+
+
+    
