@@ -5,9 +5,9 @@ namespace specmatic_order_api_csharp.services
 {
     public class OrderService
     {
-        public IdResponse CreateOrder(Order order,int id)
+        public IdResponse CreateOrder(Order order)
         {
-            DB.ReserveProductInventory(id, order.Count);
+            DB.ReserveProductInventory(order.Productid, order.Count);
             DB.AddOrder(order);
             return new IdResponse(order.Id);
         }

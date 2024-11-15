@@ -19,10 +19,10 @@ namespace specmatic_order_api_csharp.controllers // Replace with your actual nam
         }
 
         [HttpPost]
-        public ActionResult<IdResponse> Create(int id, [FromBody] Order order)
+        public ActionResult<IdResponse> Create([FromBody] Order order)
         {
             Console.WriteLine(order.Status.ToString());
-            var orderId = _orderService.CreateOrder(order,id);
+            var orderId = _orderService.CreateOrder(order);
             return Ok(orderId);
         }
         
