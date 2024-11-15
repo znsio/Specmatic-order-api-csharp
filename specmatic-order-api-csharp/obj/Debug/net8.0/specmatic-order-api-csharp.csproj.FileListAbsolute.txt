@@ -19,3 +19,4 @@
 /Users/samy/RiderProjects/specmatic-order-api-csharp/specmatic-order-api-csharp/obj/Debug/net8.0/specmatic-order-api-csharp.pdb
 /Users/samy/RiderProjects/specmatic-order-api-csharp/specmatic-order-api-csharp/obj/Debug/net8.0/specmatic-order-api-csharp.genruntimeconfig.cache
 /Users/samy/RiderProjects/specmatic-order-api-csharp/specmatic-order-api-csharp/obj/Debug/net8.0/ref/specmatic-order-api-csharp.dll
+/Users/samy/RiderProjects/specmatic-order-api-csharp/specmatic-order-api-csharp/obj/Debug/net8.0/specmatic-order-api-csharp.sourcelink.json
