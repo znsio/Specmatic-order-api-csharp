@@ -45,6 +45,7 @@ public class ContractTests : IAsyncLifetime
             .WithImage("znsio/specmatic").WithCommand("test")
             .WithCommand("--port=8090")
             .WithCommand("--host=host.testcontainers.internal")
+            .WithCommand("--filter=PATH!='/internal/metrics'")
             .WithOutputConsumer(Consume.RedirectStdoutAndStderrToConsole())
             .WithWaitStrategy(Wait.ForUnixContainer().UntilMessageIsLogged("Tests run:"))
             .WithBindMount(localReportDirectory, $"{TestContainerDirectory}/build/reports")
